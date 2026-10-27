@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# ddev-reset.sh — Stop and remove DDEV project config/containers for current project.
+# ddev-reset.sh — Arrêter et supprimer la config/conteneurs DDEV du projet courant.
 
 FORCE=0
 KEEP_DB=0

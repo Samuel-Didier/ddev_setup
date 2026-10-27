@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# ddev-init.sh — Initialize a DDEV project with auto-detection of type/docroot/versions.
-# Usage: ddev-init.sh [options] [project-dir]
-# Run from inside the project directory, or pass the path as last argument.
+# ddev-init.sh — Initialiser un projet DDEV avec détection auto du type/docroot/versions.
+# Utilisation : ddev-init.sh [options] [dossier-projet]
+# À lancer depuis le dossier du projet, ou passer le chemin en dernier argument.
 
 FORCE=0
 DO_START=1
@@ -59,7 +59,7 @@ cd "$PROJECT_DIR"
 PROJECT_DIR="$(pwd)"
 PROJECT_NAME_DEFAULT="$(basename "$PROJECT_DIR")"
 
-# --- detection helpers ---
+# --- aides à la détection ---
 detect_type() {
   if [[ -f artisan ]]; then echo laravel; return; fi
   if [[ -f composer.json ]]; then
@@ -180,7 +180,7 @@ if [[ $DO_INSTALL -eq 1 && $DO_START -eq 1 ]]; then
   fi
 fi
 
-# framework-specific post-setup (requires running containers)
+# configuration post-démarrage selon le framework (conteneurs actifs requis)
 if [[ $DO_START -eq 1 ]]; then
 case "$TYPE" in
   laravel)
@@ -202,7 +202,7 @@ case "$TYPE" in
 esac
 fi
 
-# auto-import DB dump
+# import auto du dump SQL
 if [[ $DO_START -eq 1 && $DO_IMPORT -eq 1 ]]; then
   DUMP=""
   for f in *.sql *.sql.gz *.dump; do
